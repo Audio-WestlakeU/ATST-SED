@@ -1,0 +1,97 @@
+training:
+  #batch size: [synth, weak, unlabel]
+  batch_size: [24, 24, 48, 48]
+  batch_size_val: 128
+  const_max: 2 # max weight used for self supervised loss
+  n_epochs_warmup: 50 # num epochs used for exponential warmup
+  num_workers: 6 # change according to your cpu
+  n_epochs: 200 # max num epochs
+  early_stop_patience: 200 # Same as number of epochs by default, so no early stopping used
+  accumulate_batches: 1
+  gradient_clip: 0. # 0 no gradient clipping
+  median_window: [7, 7, 7, 7, 7, 7, 7, 7, 7, 7] # length of median filter used to smooth prediction in inference (nb of output frames)
+  val_thresholds: [0.5] # thresholds used to compute f1 intersection in validation.
+  n_test_thresholds: 50 # number of thresholds used to compute psds in test
+  ema_factor: 0.999 # ema factor for mean teacher
+  self_sup_loss: mse # bce or mse
+  backend:  # pytorch lightning backend, ddp, dp or None
+  validation_interval: 10 # we use a large validation interval to save time
+  weak_split: 0.9
+  seed: 42
+  deterministic: True
+  precision: 32
+  mixup: soft # Soft mixup gives the ratio of the mix to the labels, hard mixup gives a 1 to every label present.
+  obj_metric_synth_type: intersection # intersection
+  enable_progress_bar: True
+scaler:
+  statistic: instance # instance or dataset-wide statistic
+  normtype: minmax # minmax or standard or mean normalization
+  dims: [1, 2] # dimensions over which normalization is applied
+  savepath: ./scaler.ckpt # path to scaler checkpoint
+data: # change with your paths if different.
+  synth_folder: "YOUR_PATH/dcase2021/dataset/audio/train/synthetic21_train/soundscapes_16k/"
+  synth_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/train/synthetic21_train/soundscapes/"
+  synth_tsv:  "YOUR_PATH/dcase2021/dataset/metadata/train/synthetic21_train/soundscapes.tsv"
+  strong_folder: "YOUR_PATH/dcase2021/dataset/audio/train/strong_label_real_16k/"
+  strong_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/train/strong_label_real/"
+  strong_val_tsv: "YOUR_PATH/dcase2021/dataset/metadata/validation/audioset_strong_val.tsv"
+  strong_val_dur: "YOUR_PATH/dcase2021/dataset/metadata/validation/audioset_strong_val_dur.tsv"
+  strong_tsv: "YOUR_PATH/dcase2021/dataset/metadata/train/audioset_strong.tsv"
+  weak_folder: "YOUR_PATH/dcase2021/dataset/audio/train/weak_16k/"
+  weak_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/train/weak/"
+  weak_tsv: "YOUR_PATH/dcase2021/dataset/metadata/train/weak.tsv"
+  unlabeled_folder: "YOUR_PATH/dcase2021/dataset/audio/train/unlabel_in_domain_16k/"
+  unlabeled_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/train/unlabel_in_domain/"
+  unlabeled_od_folder: "/home/shaonian/Datasets/AudioSet_strong/data/train/"
+  synth_val_folder: "YOUR_PATH/dcase2021/dataset/audio/validation/synthetic21_validation/soundscapes_16k/"
+  synth_val_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/validation/synthetic21_validation/soundscapes/"
+  synth_val_tsv:  "YOUR_PATH/dcase2021/dataset/metadata/validation/synthetic21_validation/soundscapes.tsv"
+  synth_val_dur: "YOUR_PATH/dcase2021/dataset/metadata/validation/synthetic21_validation/durations.tsv"
+  test_folder: "YOUR_PATH/dcase2021/dataset/audio/validation/validation_16k/"
+  test_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/validation/validation/"
+  test_tsv: "YOUR_PATH/dcase2021/dataset/metadata/validation/validation.tsv"
+  test_dur: "YOUR_PATH/dcase2021/dataset/metadata/validation/validation_durations.tsv"
+  eval_folder: "YOUR_PATH/dcase2021/dataset/audio/eval21_16k"
+  eval_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/eval21"
+  audio_max_len: 10
+  fs: 16000
+  net_subsample: 4
+opt:
+  mode: adam # adam or sgd or both
+  cnn_lr: 0.001
+  rnn_lr: 0.001
+  tfm_lr: 0.0001
+  tfm_lr_scale: 0.5
+  tfm_trainable_layers: 0 # max: 14; min: 0 for freezing
+feats:
+  n_mels: 128
+  n_filters: 2048
+  hop_length: 256
+  n_window: 2048
+  sample_rate: 16000
+  f_min: 0
+  f_max: 8000
+net:
+  dropout: 0.5
+  rnn_layers: 2
+  n_in_channel: 1
+  nclass: 10
+  attention: True
+  n_RNN_cell: 128
+  activation: cg
+  rnn_type: BGRU
+  kernel_size: [3, 3, 3, 3, 3, 3, 3]
+  padding: [1, 1, 1, 1, 1, 1, 1]
+  stride: [1, 1, 1, 1, 1, 1, 1]
+  nb_filters: [ 16, 32, 64, 128, 128, 128, 128 ]
+  pooling: [ [ 2, 2 ], [ 2, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ] ]
+  dropout_recurrent: 0
+  use_embeddings: True
+  embedding_size: 768
+  embedding_type: frame
+  aggregation_type: pool1d # nni/pool1d/mha
+ultra:
+  atst_dropout: 0.0
+  model_init: # leave it empty
+  atst_init: # absolute path to checkpoint
+comments: 
