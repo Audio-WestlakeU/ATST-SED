@@ -10,4 +10,4 @@ This work is submitted to ICASSP 2024.
 
 In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model integrated with the CRNN SED system.
 <div align="center">
-<image scr="src/flowchart.png" width="500" alt="The fine-tuning strategy of ATST-SED" />
+<image src="/src/flowchart.png"  width="500" alt="The proposed fine-tuning method for ATST-SED" />
