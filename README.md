@@ -63,7 +63,7 @@ Two fine-tuned ATST-SED checkpoints are also released in the table below. You ca
 | :--------: | :--: | :----: | :----: | :---: |
 | DCASE dev. set | - | 0.583 | 0.810 | [Stage2_wo_ckpt](https://drive.google.com/file/d/1yMv05N0Nz5mSzlQ4YBb_sqOjazPbPDhw/view?usp=sharing) |
 | DCASE public eval. set | - | 0.631 | 0.833 | - |
-| DCASE dev. set | Used | 0.587 | 0.812 |[Stage2_w_ckpt](/src/stage_2_w_external.ckpt) |
+| DCASE dev. set | Used | 0.587 | 0.812 |[Stage2_w_ckpt](https://drive.google.com/file/d/16BP00UCRlAcSPgk-1kr0qrA6sjZNzhTf/view?usp=sharing) |
 | DCASE public eval. set | Used | 0.623 | 0.848 | - |
 
 If you want to check the performance of the fine-tuned checkpoint:
