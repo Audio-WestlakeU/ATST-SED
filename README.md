@@ -57,14 +57,17 @@ The other parts in the `desed_task` are left unchange
 
 We report both DESED development set and public evaluation set results. The external set is the extra data extracted from the [AudioSet](http://research.google.com/audioset/)/[AudioSetStrong](https://research.google.com/audioset/download_strong.html). Please do not mess it with the 3000+ strongly labelled real audio clips from the AudioSet.
 
-Two fine-tuned ATST-SED checkpoints are also released in the table below. You can download them and use them directly.
+Please note that ATST-SED also get top-ranked performance on the public evaluation dataset without using external dataset. But we did not report it in our paper since the limited writing space. Top-1 model used extra weakly-labelled data from AudioSet, we are still mining these part of the data to improve the model performance.
+
 
 | Dataset | External set | PSDS_1 | PSDS_2 | ckpt |
 | :--------: | :--: | :----: | :----: | :---: |
 | DCASE dev. set | - | 0.583 | 0.810 | [Stage2_wo_ext.ckpt](https://drive.google.com/file/d/1yMv05N0Nz5mSzlQ4YBb_sqOjazPbPDhw/view?usp=sharing) |
-| DCASE public eval. set | - | 0.631 | 0.833 | - |
+| DCASE public eval. set | - | 0.631 | 0.833 | same as the above |
 | DCASE dev. set | Used | 0.587 | 0.812 |[Stage2_w_ext.ckpt](https://drive.google.com/file/d/16BP00UCRlAcSPgk-1kr0qrA6sjZNzhTf/view?usp=sharing) |
-| DCASE public eval. set | Used | 0.623 | 0.848 | - |
+| DCASE public eval. set | Used | 0.623 | 0.848 | same as the above |
+
+Two fine-tuned ATST-SED checkpoints are also released in the table below. You can download them and use them directly.
 
 If you want to check the performance of the fine-tuned checkpoint:
 
