@@ -237,7 +237,7 @@ def single_run(
         tot_steps = config["training"]["n_epochs"] * epoch_len
 
         exp_scheduler = {
-            "scheduler": ExponentialWarmup(opt[0], max_lrs, exp_steps, tot_steps=tot_steps),
+            "scheduler": ExponentialWarmup(opt[0], max_lrs, exp_steps, tot_steps=tot_steps, cos_down=False),
             "interval": "step",
         }
         exp_scheduler = [exp_scheduler]

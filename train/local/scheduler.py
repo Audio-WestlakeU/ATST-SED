@@ -52,7 +52,7 @@ class ExponentialWarmup(BaseScheduler):
         exponent: float, the exponent to be used.
     """
 
-    def __init__(self, optimizer, max_lr, rampup_length, exponent=-5.0, tot_steps=None, min_lr_scaler=0.05):
+    def __init__(self, optimizer, max_lr, rampup_length, exponent=-5.0, tot_steps=None, min_lr_scaler=0.1, cos_down=True):
         super().__init__(optimizer)
         self.rampup_len = rampup_length
         self.max_lr = max_lr
@@ -61,6 +61,7 @@ class ExponentialWarmup(BaseScheduler):
         self.tot_steps = tot_steps
         self.min_lr_scaler = min_lr_scaler
         self.ema_steps = self.rampup_len * 5
+        self.cos_down = cos_down
 
     def _get_scaling_factor(self):
 
@@ -84,9 +85,12 @@ class ExponentialWarmup(BaseScheduler):
             return (math.cos(phase) + 1) / 2   
 
     def _get_lr(self):
-        # lr = [lr * self._get_scaling_factor() for lr in self.max_lr] # + [lr * self._get_exp_up_cos_down() for lr in self.max_lr[2:]]
-        if self.step_num < self.rampup_len:
-            lr = [lr * self._get_scaling_factor() for lr in self.max_lr]
+        if self.cos_down:
+            if self.step_num < self.rampup_len:
+                lr = [lr * self._get_scaling_factor() for lr in self.max_lr]
+            else:
+                lr = [(x - x * self.min_lr_scaler) * self._get_exp_up_cos_down() + x * self.min_lr_scaler for x in self.max_lr]
+            return lr
         else:
-            lr = [(x - x * self.min_lr_scaler) * self._get_exp_up_cos_down() + x * self.min_lr_scaler for x in self.max_lr]
-        return lr
+            lr = [lr * self._get_scaling_factor() for lr in self.max_lr] # + [lr * self._get_exp_up_cos_down() for lr in self.max_lr[2:]]
+            return lr
