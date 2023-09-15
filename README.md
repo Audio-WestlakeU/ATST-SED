@@ -65,7 +65,7 @@ Please note that ATST-SED also get top-ranked performance on the public evaluati
 | DCASE dev. set | - | 0.583 | 0.810 | [Stage2_wo_ext.ckpt](https://drive.google.com/file/d/1yMv05N0Nz5mSzlQ4YBb_sqOjazPbPDhw/view?usp=sharing) |
 | DCASE public eval. set | - | 0.631 | 0.833 | same as the above |
 | DCASE dev. set | Used | 0.587 | 0.812 |[Stage2_w_ext.ckpt](https://drive.google.com/file/d/16BP00UCRlAcSPgk-1kr0qrA6sjZNzhTf/view?usp=sharing) |
-| DCASE public eval. set | Used | 0.623 | 0.848 | same as the above |
+| DCASE public eval. set | Used | 0.631 | 0.846 | same as the above |
 
 Two fine-tuned ATST-SED checkpoints are also released in the table below. You can download them and use them directly.
 
