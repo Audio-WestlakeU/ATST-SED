@@ -32,25 +32,35 @@ The other parts in the `desed_task` are left unchange
 
 3. Clone the ATST-SED codes by:
 
-```git clone https://github.com/Audio-WestlakeU/ATST-SED.git```
+```
+git clone https://github.com/Audio-WestlakeU/ATST-SED.git
+```
 
 4. Install our desed_task package by:
 
-```cd ATST-SED```
+```
+cd ATST-SED
+```
 
-```pip install -e .```
+```
+pip install -e .
+```
 
 5. Change all required pathes in `train/local/confs/stage1.yaml` and `train/local/confs/stage2.yaml` to your own pathes. Noted that the pretrained ATST checkpoint path should be changed in **both** files.
 
 6. Start training stage 1 by:
 
-```python train_stage1.py --gpus YOUR_DEVICE_ID,```
+```
+python train_stage1.py --gpus YOUR_DEVICE_ID,
+```
 
 7. When finishing the stage 1 training, change the path of the `model_init` in `train/local/confs/stage2.yaml` to the stage 1 checkpoint path.
 
 8. Start training stage 2 by:
 
-```python train_stage2.py --gpus YOUR_DEVICE_ID,```
+```
+python train_stage2.py --gpus YOUR_DEVICE_ID,
+```
 
 
 # Performance
@@ -71,7 +81,9 @@ Two fine-tuned ATST-SED checkpoints are also released in the table below. You ca
 
 If you want to check the performance of the fine-tuned checkpoint:
 
-```python train_stage2.py --gpus YOUR_DEVICE_ID, --test_from_checkpoint YOUR_CHECKPOINT_PATH```
+```
+python train_stage2.py --gpus YOUR_DEVICE_ID, --test_from_checkpoint YOUR_CHECKPOINT_PATH
+```
 
 # Citation
 
