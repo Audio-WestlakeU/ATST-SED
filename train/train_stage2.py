@@ -362,7 +362,7 @@ def prepare_run(argv=None):
     parser = argparse.ArgumentParser("Training a SED system for DESED Task")
     parser.add_argument(
         "--conf_file",
-        default="./confs/stage2.yaml",
+        default="./confs/stage2_real.yaml",
         help="The configuration file with all the experiment parameters.",
     )
     parser.add_argument(

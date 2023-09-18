@@ -3,7 +3,7 @@ This repo includes the official implementations of "Fine-tune the pretrained ATS
 
 This work is submitted to ICASSP 2024.
 
-[Paper :star_struck:](TBC) **|** [Issues :sweat_smile:](https://github.com/Audio-WestlakeU/ATST-SED/issues)
+[Paper :star_struck:](https://arxiv.org/abs/2309.08153) **|** [Issues :sweat_smile:](https://github.com/Audio-WestlakeU/ATST-SED/issues)
  **|** [Lab :hear_no_evil:](https://github.com/Audio-WestlakeU) **|** [Contact :kissing_heart:](sao_year@126.com)
 
 # Introduction
@@ -75,4 +75,15 @@ If you want to check the performance of the fine-tuned checkpoint:
 
 # Citation
 
-TBC
+If you want to cite this paper:
+
+```
+@misc{shao2023finetune,
+      title={Fine-tune the pretrained ATST model for sound event detection}, 
+      author={Nian Shao and Xian Li and Xiaofei Li},
+      year={2023},
+      eprint={2309.08153},
+      archivePrefix={arXiv},
+      primaryClass={eess.AS}
+}
+```
