@@ -42,7 +42,6 @@ data: # change with your paths if different.
   weak_tsv: "YOUR_PATH/dcase2021/dataset/metadata/train/weak.tsv"
   unlabeled_folder: "YOUR_PATH/dcase2021/dataset/audio/train/unlabel_in_domain_16k/"
   unlabeled_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/train/unlabel_in_domain/"
-  unlabeled_od_folder: "/home/shaonian/Datasets/AudioSet_strong/data/train/"
   synth_val_folder: "YOUR_PATH/dcase2021/dataset/audio/validation/synthetic21_validation/soundscapes_16k/"
   synth_val_folder_44k: "YOUR_PATH/dcase2021/dataset/audio/validation/synthetic21_validation/soundscapes/"
   synth_val_tsv:  "YOUR_PATH/dcase2021/dataset/metadata/validation/synthetic21_validation/soundscapes.tsv"
