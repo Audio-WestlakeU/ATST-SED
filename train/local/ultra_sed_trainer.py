@@ -496,8 +496,6 @@ class SEDTask4(pl.LightningModule):
         self.val_scores_postprocessed_buffer_teacher_synth = {}
         self.val_scores_postprocessed_buffer_student_real = {}
         self.val_scores_postprocessed_buffer_teacher_real = {}
-        self.val_scores_postprocessed_buffer_student_eval = {}
-        self.val_scores_postprocessed_buffer_teacher_eval = {}
 
         self.get_weak_student_f1_seg_macro.reset()
         self.get_weak_teacher_f1_seg_macro.reset()
@@ -507,8 +505,6 @@ class SEDTask4(pl.LightningModule):
         self.val_loss_weak_teacher = []
         self.val_loss_synth_student = []
         self.val_loss_synth_teacher = []
-        self.val_loss_eval_student = []
-        self.val_loss_eval_teacher = []
         self.val_loss_real_student = []
         self.val_loss_real_teacher = []
         return obj_metric
