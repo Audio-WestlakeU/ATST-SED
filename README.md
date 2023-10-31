@@ -33,7 +33,7 @@ The other parts in the `desed_task` are left unchange
 
 1. Ensure you have the correct environment. The environment of this code is the same as the DCASE 2023 baseline, please refer to their [docs/codes](https://github.com/DCASE-REPO/DESED_task/tree/master/recipes/dcase2023_task4_baseline) to configure your environment.
 
-2. Download the pretrained [ATST checkpoint](https://drive.google.com/file/d/1_xb0_n3UNbUG_pH1vLHTviLfsaSfCzxz/view?usp=drive_link).
+2. Download the pretrained [ATST checkpoint (atst_as_2M.ckpt)](https://drive.google.com/file/d/1_xb0_n3UNbUG_pH1vLHTviLfsaSfCzxz/view?usp=drive_link). Noted that this checkpoint is fine-tuned by the AudioSet-2M.
 
 3. Clone the ATST-SED codes by:
 
