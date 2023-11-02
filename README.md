@@ -15,9 +15,9 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 <image src="/src/flowchart.png"  width="500" alt="The proposed fine-tuning method for ATST-SED" />
 </div>
 
-# Updating
+# Updating Notice
 
-- There exists a strong real validation set in the code/configuration files. In our experiment, we split the strong real dataset with a ratio of 9:1 to generate the train/validation sets for strong real data. But such way of model selection does not promise to select the best model. You can remove the strong validation set and change the `val_object` to some other metrics if you want. To reproduce our work, we uploaded the train/valiation tsv files in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/2).
+- There exists a strong real validation set in the code/configuration files. In our experiment, we split the strong real dataset with a ratio of 9:1 to generate the train/validation sets for strong real data. But such way of model selection does not promise to select the best model in the stage 1 (PS: we did not use it in the stage 2). You can remove the strong validation set, but please also change the `val_object` to some other metrics and remove the strong val dataset in the train files. To reproduce our work, we uploaded the train/valiation tsv files in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/2).
 
 # Comparing with DCASE code
 For better understanding of SED community, our codes are developed based on the [baseline codes](https://github.com/DCASE-REPO/DESED_task/tree/master/recipes/dcase2023_task4_baseline) of [DCASE2023 challenge task 4](https://dcase.community/). Therefore, the training progress is build under [`pytorch-lightning`](https://lightning.ai/).
