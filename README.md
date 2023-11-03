@@ -51,7 +51,7 @@ cd ATST-SED
 pip install -e .
 ```
 
-5. Change all required pathes in `train/local/confs/stage1.yaml` and `train/local/confs/stage2.yaml` to your own pathes. Noted that the pretrained ATST checkpoint path should be changed in **both** files.
+5. Change all required paths in `train/local/confs/stage1.yaml` and `train/local/confs/stage2.yaml` to your own paths. Noted that the pretrained ATST checkpoint path should be changed in **both** files.
 
 6. Start training stage 1 by:
 
