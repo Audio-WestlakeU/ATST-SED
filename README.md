@@ -59,7 +59,7 @@ pip install -e .
 python train_stage1.py --gpus YOUR_DEVICE_ID,
 ```
 
-7. When finishing the stage 1 training, change the path of the `model_init` in `train/local/confs/stage2.yaml` to the stage 1 checkpoint path.
+7. When finishing the stage 1 training, change the path of the `model_init` in `train/local/confs/stage2.yaml` to the stage 1 checkpoint path (we saved top-5 models in both stages of training, you could use the best one as the model initialization in the stage 2, but use any one of the top-5 models should give the similar results).
 
 8. Start training stage 2 by:
 
