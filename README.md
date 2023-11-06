@@ -104,7 +104,7 @@ We report the model performances on the development set with the following setup
 | [8, 8, 16, 16] | 80 | 2 | 0.562 | 0.802 |
 | [12, 12, 24, 24] | 125 | 5 | 0.570 |0.805 |
 
-As shown in the table, if you cannot use the default batch sizes, please make sure that they are in proper level. Or, we recommend you to use `accm_grad` parameter to enlarge the batch sizes. 
+As shown in the table, if you cannot use the default batch sizes, please make sure that they are in a proper level. Or, we recommend you to use `accm_grad` hyperparameter in the `stage2.yaml` to enlarge the batch sizes. 
 
 # Citation
 
