@@ -19,7 +19,7 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 
 - **Strong val dataset**: There exists a strong real validation set in the code/configuration files. In our experiment, we split the strong real dataset with a ratio of 9:1 to generate the train/validation sets for strong real data. But such way of model selection does not promise to select the best model in the stage 1 (PS: we did not use it in the stage 2). You can remove the strong validation set, but please also change the `val_object` to some other metrics and remove the strong val dataset in the train files. To reproduce our work, we uploaded the train/valiation tsv files in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/2).
 
-- **Training steps in Stage 2**: If you change the batch sizes when fine-tuning ATST-Frame (Stage 2), you might probably need to change the `n_epochs` and `n_epochs_warmup` in the configuration file `train/local/confs/stage2.yaml` correspondingly. According to our experiments, the model converge at 5.8k - 7.2k steps. Extra training steps might not help the model to perform better. E.g., if you change the batch size to [4, 4, 8, 8], the `n_epochs` and `n_epochs_warmup` could be changed to `40` ~ `50` and `1` ~ `2`, respectively.
+- **About bathc sizes**: If you change the batch sizes when fine-tuning ATST-Frame (Stage 2), you might probably need to change the `n_epochs` and `n_epochs_warmup` in the configuration file `train/local/confs/stage2.yaml` correspondingly. The fine-tuning of ATST-SED is related to the batch sizes, you might not reproduce the reported results when using a smaller batch sizes. The ablation study of the batch size setups is shown in the model performance below.
 
 # Comparing with DCASE code
 For better understanding of SED community, our codes are developed based on the [baseline codes](https://github.com/DCASE-REPO/DESED_task/tree/master/recipes/dcase2023_task4_baseline) of [DCASE2023 challenge task 4](https://dcase.community/). Therefore, the training progress is build under [`pytorch-lightning`](https://lightning.ai/).
@@ -91,6 +91,20 @@ If you want to check the performance of the fine-tuned checkpoint:
 ```
 python train_stage2.py --gpus YOUR_DEVICE_ID, --test_from_checkpoint YOUR_CHECKPOINT_PATH
 ```
+
+---
+
+Ablation on batch sizes:
+
+We report the model performances on the development set with the following setups:
+
+| Batch sizes | `n_epochs` | `n_epochs_warmup` | PSDS_1 | PSDS_2 |
+| :--------: | :--: | :----: | :----: | :---: |
+| [4, 4, 8, 8] | 40 | 2 | 0.535 | 0.784 |
+| [8, 8, 16, 16] | 80 | 2 | 0.562 | 0.802 |
+| [12, 12, 24, 24] | 125 | 5 | 0.570 |0.805 |
+
+As shown in the table, if you cannot use the default batch sizes, please make sure that they are in proper level. Or, we recommend you to use `accm_grad` parameter to enlarge the batch sizes. 
 
 # Citation
 
