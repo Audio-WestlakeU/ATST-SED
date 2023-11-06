@@ -94,7 +94,7 @@ python train_stage2.py --gpus YOUR_DEVICE_ID, --test_from_checkpoint YOUR_CHECKP
 
 ---
 
-Ablation on batch sizes:
+**Ablation on batch sizes**:
 
 We report the model performances on the development set with the following setups:
 
