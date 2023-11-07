@@ -99,7 +99,7 @@ python train_stage2.py --gpus YOUR_DEVICE_ID, --test_from_checkpoint YOUR_CHECKP
 We report the model performances on the development set with the following setups:
 
 | Batch sizes | `n_epochs` | `n_epochs_warmup` | `accm_grad` | PSDS_1 | PSDS_2 |
-| :--------: | :--: | :----: | :----: | :---: |
+| :--------: | :--: | :--: | :--: | :----: | :---: |
 | [4, 4, 8, 8] | 40 | 2 | \ | 0.535 | 0.784 |
 | [8, 8, 16, 16] | 80 | 2 | \ | 0.562 | 0.802 |
 | [12, 12, 24, 24] | 125 | 5 | \ | 0.570 |0.805 |
