@@ -2,7 +2,7 @@ training:
   #batch size: [synth, weak, unlabel]
   batch_size: [24, 24, 48, 48]  # if you want to change the batch size, be careful of the total training steps.
   batch_size_val: 64
-  const_max: 140 # max weight used for self supervised loss
+  const_max: 70 # max weight used for self supervised loss
   n_epochs_warmup: 10 # num epochs used for exponential warmup
   num_workers: 6 # change according to your cpu
   n_epochs: 250 # max num epochs
