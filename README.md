@@ -17,7 +17,7 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 
 # Updating Notice
 
-- **Strong val dataset**: There exists a strong real validation set in the code/configuration files. In our experiment, we split the strong real dataset with a ratio of 9:1 to generate the train/validation sets for strong real data. But such way of model selection does not promise to select the best model in the stage 1 (PS: we did not use it in the stage 2). You can remove the strong validation set, but please also change the `val_object` to some other metrics and remove the strong val dataset in the train files. To reproduce our work, we uploaded the train/valiation tsv files in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/2).
+- **Strong val dataset**: This dataset meta files are now updated to the repo.
 
 - **About bathc sizes**: If you change the batch sizes when fine-tuning ATST-Frame (Stage 1/2), you might probably need to change the `n_epochs` and `n_epochs_warmup` in the configuration file `train/local/confs/stage2.yaml` correspondingly. The fine-tuning of ATST-SED is related to the batch sizes, you might not reproduce the reported results when using a smaller batch sizes. The ablation study of the batch size setups is shown in the model performance below.
 
