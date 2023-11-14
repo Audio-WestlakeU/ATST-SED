@@ -612,8 +612,6 @@ class SEDTask4(pl.LightningModule):
         self.val_loss_weak_teacher = []
         self.val_loss_synth_student = []
         self.val_loss_synth_teacher = []
-        self.val_loss_eval_student = []
-        self.val_loss_eval_teacher = []
         self.val_loss_real_student = []
         self.val_loss_real_teacher = []
         return obj_metric
