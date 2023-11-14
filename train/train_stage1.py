@@ -9,7 +9,7 @@ from desed_task.utils.encoder import ManyHotEncoder
 from desed_task.nnet.CRNN_e2e import CRNN
 from local.scheduler import ExponentialWarmup
 from local.classes_dict import classes_labels
-from local.stage1_trainer import SEDTask4
+from train.local.stage1_trainer import SEDTask4
 from desed_task.dataio.datasets_atst_sed import StronglyAnnotatedSet, UnlabeledSet, WeakSet
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
@@ -344,7 +344,7 @@ def prepare_run(argv=None):
     parser = argparse.ArgumentParser("Training a SED system for DESED Task")
     parser.add_argument(
         "--conf_file",
-        default="./confs/stage1.yaml",
+        default="./confs/stage1_real.yaml",
         help="The configuration file with all the experiment parameters.",
     )
     parser.add_argument(

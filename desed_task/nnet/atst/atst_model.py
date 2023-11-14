@@ -38,11 +38,19 @@ class ATST(torch.nn.Module):
                     continue
                 else:
                     new_k = k.replace("model.teacher.encoder.", "")
-                # new_k = k.replace("model.teacher.encoder.", "")
-                atst_state_dict[new_k] = v 
+                atst_state_dict[new_k] = v
+            # C2F
+            if "encoder.encoder.frame_encoder." in k:
+                new_k = k.replace("encoder.encoder.frame_encoder.", "")
+                atst_state_dict[new_k] = v
+                continue
+            if "encoder.encoder.teacher_module." in k:
+                continue
+            # ATST-Frame
             if "encoder.encoder." in k:
                 new_k = k.replace("encoder.encoder.", "")
                 atst_state_dict[new_k] = v
+
         self.atst.load_state_dict(atst_state_dict, strict=True)
         for n, param in self.atst.named_parameters():
             param.requires_grad = False
