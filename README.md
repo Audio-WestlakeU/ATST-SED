@@ -1,7 +1,5 @@
 # ATST-SED
-This repo includes the official implementations of "Fine-tune the pretrained ATST model for sound event detection".
-
-This work is submitted to ICASSP 2024. 
+This repo includes the official implementations of "Fine-tune the pretrained ATST model for sound event detection" (accepted by ICASSP 2024). 
 
 This work is highly related to [ATST](https://arxiv.org/abs/2204.12076), [ATST-Frame](https://arxiv.org/abs/2306.04186). Please check these works if you want to find out the principles of the ATST-SED.
 
