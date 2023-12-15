@@ -1,5 +1,5 @@
 # ATST-SED
-This repo includes the official implementations of "Fine-tune the pretrained ATST model for sound event detection" (accepted by ICASSP 2024). 
+The official implementations of "Fine-tune the pretrained ATST model for sound event detection" (accepted by ICASSP 2024). 
 
 This work is highly related to [ATST](https://arxiv.org/abs/2204.12076), [ATST-Frame](https://arxiv.org/abs/2306.04186). Please check these works if you want to find out the principles of the ATST-SED.
 
@@ -107,7 +107,7 @@ We report the model performances on the development set with the following setup
 | [12, 12, 24, 24] | 125 | 5 | \ | 0.570 |0.805 |
 | [4, 4, 8, 8] | 250 | 10 | 6 | 0.579 | 0.811 |
 
-As shown in the table, if you cannot use the default batch sizes, please make sure that they are in a proper level. Or, we recommend you to use `accm_grad` hyperparameter in the `stage2.yaml` to enlarge the batch sizes. However, using `accm_grad` would also decay the model performances, due to its influcences to the batch norm layer of the CNN model. Comparing with the reported results, you might get a poorer result from 56%~58% in PSDS1 (using last ckpt for validation).
+As shown in the table, if you cannot afford the default batch sizes, please make sure that they are in a proper level. Or, we recommend you to use `accm_grad` hyperparameter in the `stage2.yaml` to enlarge the batch sizes. However, using `accm_grad` would also decay the model performances, due to its influcences to the batch norm layer of the CNN model. Comparing with the reported results, you might get a poorer result from 56%~58% in PSDS1 (using last ckpt for validation).
 
 # Citation
 
