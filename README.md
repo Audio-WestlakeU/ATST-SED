@@ -17,6 +17,8 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 
 # Updating Notice
 
+- **Real dataset download**: The 7000+ strongly-labelled audio clips extracted from the AudioSet is provided in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/5).
+
 - **Strong val dataset**: This dataset meta files are now updated to the repo.
 
 - **About batch sizes**: If you change the batch sizes when fine-tuning ATST-Frame (Stage 1/2), you might probably need to change the `n_epochs` and `n_epochs_warmup` in the configuration file `train/local/confs/stage2.yaml` correspondingly. The fine-tuning of ATST-SED is related to the batch sizes, you might not reproduce the reported results when using a smaller batch sizes. The ablation study of the batch size setups is shown in the model performance below.
