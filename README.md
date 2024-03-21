@@ -116,12 +116,14 @@ As shown in the table, if you cannot afford the default batch sizes, please make
 If you want to cite this paper:
 
 ```
-@misc{shao2023finetune,
-      title={Fine-tune the pretrained ATST model for sound event detection}, 
-      author={Nian Shao and Xian Li and Xiaofei Li},
-      year={2023},
-      eprint={2309.08153},
-      archivePrefix={arXiv},
-      primaryClass={eess.AS}
-}
+@INPROCEEDINGS{10446159,
+  author={Shao, Nian and Li, Xian and Li, Xiaofei},
+  booktitle={ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Fine-Tune the Pretrained ATST Model for Sound Event Detection}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={911-915},
+  keywords={Training;Event detection;Self-supervised learning;Feature extraction;Transformers;Task analysis;Speech processing;sound event detection;self-supervised learning;ATST;fine-tuning pretrained model},
+  doi={10.1109/ICASSP48485.2024.10446159}}
 ```
