@@ -3,7 +3,7 @@ The official implementations of "Fine-tune the pretrained ATST model for sound e
 
 This work is highly related to [ATST](https://arxiv.org/abs/2204.12076), [ATST-Frame](https://arxiv.org/abs/2306.04186). Please check these works if you want to find out the principles of the ATST-SED.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) | [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/fine-tune-the-pretrained-atst-model-for-sound/sound-event-detection-on-desed)](https://paperswithcode.com/sota/sound-event-detection-on-desed?p=fine-tune-the-pretrained-atst-model-for-sound)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/fine-tune-the-pretrained-atst-model-for-sound/sound-event-detection-on-desed)](https://paperswithcode.com/sota/sound-event-detection-on-desed?p=fine-tune-the-pretrained-atst-model-for-sound) | [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 [Paper :star_struck:](https://arxiv.org/abs/2309.08153) **|** [Issues :sweat_smile:](https://github.com/Audio-WestlakeU/ATST-SED/issues)
