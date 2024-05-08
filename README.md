@@ -18,6 +18,8 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 
 # Updating Notice
 
+- **Validation dataset definition**: A typo fixed in the validation dataset definition, the explanation is [here] (https://github.com/Audio-WestlakeU/ATST-SED/issues/11). 
+
 - **Real dataset download**: The 7000+ strongly-labelled audio clips extracted from the AudioSet is provided in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/5).
 
 - **Strong val dataset**: This dataset meta files are now updated to the repo.
