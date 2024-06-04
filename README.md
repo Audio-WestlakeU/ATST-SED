@@ -18,6 +18,9 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 
 # Updating Notice
 
+- **DESED free download for Chinese users**: Downloading the DESED dataset is frustrating, we provide a shared link for users (shared by Chinese cloud disk) [here](DESED_dataset
+链接：https://pan.xunlei.com/s/VNzWiiE1XZGd00jFc_HC72FzA1?pwd=bipt#).
+
 - **Validation dataset definition**: A typo fixed in the validation dataset definition, the explanation is [here](https://github.com/Audio-WestlakeU/ATST-SED/issues/11). 
 
 - **Real dataset download**: The 7000+ strongly-labelled audio clips extracted from the AudioSet is provided in [this issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/5).
