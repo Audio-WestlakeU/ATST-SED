@@ -92,7 +92,10 @@ class CRNN(nn.Module):
         
         # rnn features
         embeddings = self.atst_frame(pretrain_x)
-        embeddings = torch.nn.functional.adaptive_avg_pool1d(embeddings, 156).transpose(1, 2)
+        if embeddings.shape[-1] != x.shape[1]:
+            embeddings = torch.nn.functional.adaptive_avg_pool1d(embeddings, x.shape[1]).transpose(1, 2)
+        else:
+            embeddings = embeddings.transpose(1, 2)
         x = self.cat_tf(torch.cat((x, embeddings), -1))
         
         x = self.rnn(x)
