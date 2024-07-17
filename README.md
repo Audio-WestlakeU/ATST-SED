@@ -17,6 +17,7 @@ In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model
 </div>
 
 # Updating Notice
+- **Quick inference**: Add a script for quick inference on a given audio file with any length. Discussions are in this [issue](https://github.com/Audio-WestlakeU/ATST-SED/issues/8).
 
 - **DESED free download for Chinese users**: Downloading the DESED dataset is frustrating, we provide a shared link (shared by Chinese cloud disk) for the [DESED_dataset](https://pan.xunlei.com/s/VNzWiiE1XZGd00jFc_HC72FzA1?pwd=bipt#).
 
