@@ -84,7 +84,7 @@ class CRNN(nn.Module):
 
     def forward(self, x, pretrain_x, pad_mask=None, embeddings=None):
         x = x.transpose(1, 2).unsqueeze(1)
-        # conv features
+        # conv featuress
         x = self.cnn(x)
         bs, chan, frames, freq = x.size()
         x = x.squeeze(-1)

@@ -67,7 +67,7 @@ class PatchEmbed_v2(nn.Module):
         patch_embed = self.patch_embed(patch)
 
         if length is not None:
-            patch_length = (height//self.patch_height) * ((length - length%self.patch_width)//self.patch_width)
+            patch_length = (torch.div(height, self.patch_height, rounding_mode='trunc')) * torch.div((length - length%self.patch_width), self.patch_width, rounding_mode='trunc')
         else:
             patch_length = None
 
