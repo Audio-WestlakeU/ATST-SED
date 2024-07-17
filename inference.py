@@ -157,7 +157,7 @@ class ATSTSEDInferencer(nn.Module):
         
 if __name__ == "__main__":
     inference_model = ATSTSEDInferencer(
-        "./train/exp/stage2/c2f/version_0/epoch=249-step=7249.ckpt",
+        "YOUR_TRAINED_MODEL_PATH",
         "./train/confs/stage2_real.yaml",
         overlap_dur=3)
     sed_results = inference_model("./inference_test.wav")
