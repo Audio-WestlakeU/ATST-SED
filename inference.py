@@ -87,8 +87,16 @@ class ATSTSEDInferencer(nn.Module):
         ### get teacher model
         state_dict = {k.replace("sed_teacher.", ""): v for k, v in state_dict.items() if "teacher" in k}
         model.load_state_dict(state_dict, strict=True)
+        model.eval()
         return model
     
+    def get_logmel(self, wav_file):
+        mixture, onset_s, offset_s, padded_indx = read_audio(
+            wav_file, False, False, None
+        )
+        sed_feats, _ = self.feature_extractor(mixture)
+        return sed_feats[0].detach().cpu().numpy()
+        
     def forward(self, wav_file):
         mixture, onset_s, offset_s, padded_indx = read_audio(
                 wav_file, False, False, None
@@ -156,14 +164,40 @@ class ATSTSEDInferencer(nn.Module):
             return (decisions > 0).astype(float)[:, :-padding_frames]
         
 if __name__ == "__main__":
+    import soundfile as sf
+    import matplotlib.pyplot as plt
+    test_file = "./test1_CNspeech.wav"
+    test_name = ".".join(test_file.split("/")[-1].split(".")[:-1])
+    sed_classes = [x.split("_")[0] for x in classes_labels.keys()]
     inference_model = ATSTSEDInferencer(
-        "YOUR_TRAINED_MODEL_PATH",
+        "YOUR_CKPT_PATH",
         "./train/confs/stage2_real.yaml",
         overlap_dur=3)
-    sed_results = inference_model("./inference_test.wav")
-    print(sed_results.shape)
-    import matplotlib.pyplot as plt
-    print(sed_results)
-    plt.imshow(sed_results)
-    plt.savefig("inference_results")
+    mel_spec = inference_model.get_logmel(test_file)
+    sed_results = inference_model(test_file)
+
+    
+    if sed_results.sum():
+        # Give sed results colors
+        sed_results = sed_results * np.arange(1, len(sed_results) + 1).reshape(-1, 1) * 10
+        fig, (ax1, ax2) = plt.subplots(2, 1)
+        ax1.imshow(mel_spec, aspect="auto", origin="lower", interpolation="none")
+        ax1.set_xticks([])
+        ax1.set_yticks([])
+        ax1.set_ylabel("Mel-bands")
+        # pad zeros between columns and turn zero to nan for better visualization
+        sed_results = np.concatenate([np.zeros_like(sed_results), sed_results], axis=1)
+        sed_results = sed_results.reshape(-1, sed_results.shape[1] // 2).astype(float)
+        sed_results[sed_results == 0] = np.nan
+        ax2.imshow(sed_results, aspect="auto", origin="lower", interpolation="none", vmax=100, vmin=0, cmap='viridis')
+        xticks = np.linspace(0, sed_results.shape[1], 11)
+        xticks_performed = ["{:.1f}".format(x) for x in np.linspace(0, sf.info(test_file).duration, 11)]
+        ax2.set_xticks(xticks, xticks_performed)
+        ax2.set_yticks(np.linspace(1, 2 * len(sed_classes) - 1, 10), sed_classes)
+        ax2.set_xlabel("Time (s)")
+        print(f"SED results plotted in ./inference_{test_name}.png")
+        plt.suptitle(f"SED inference results for {test_file}")
+        plt.savefig(f"inference_{test_name}.png")
+    else:
+        print("no valid event detected")
     
