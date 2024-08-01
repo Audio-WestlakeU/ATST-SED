@@ -11,7 +11,15 @@ This work is highly related to [ATST](https://arxiv.org/abs/2204.12076), [ATST-F
 
 # Introduction
 
-In a nutshell, ATST-SED proposes a fine-tuning strategy for the pretrained model integrated with the CRNN SED system.
+**ATST-SED** introduces a semi-supervised fine-tuning strategy for better using the pretrained model in SED.
+**ATST-SED** vs **FrameATST**:
+1. FrameATST is a pretrained model that gives high-quality frame-wise audio representation. It works well on various of audio downstream tasks including AudioSet (clip-wise audio tagging) and AudioSetStrong (frame-wise SED).
+2. ATST-SED is a application-specific (in this work, DESED) fine-tuned model that utilized FrameATST model. It works well when:
+     a. We only care several sound events;
+     b. We only have a small amount of labelled data for these events and a relatively larger amount of unlabelled data.
+3. If you are looking for a high-quality inference model for AudioSet/AudioSetStrong, you could refer to the [inference code of FrameATST](https://github.com/Audio-WestlakeU/audiossl/issues/12).
+4. If you are looking for a high-quality inference model for DESED or want to train your own SED model with your own data, you could refer to the [inference code of ATST-SED](https://github.com/Audio-WestlakeU/ATST-SED/issues/8)
+
 <div align="center">
 <image src="/src/flowchart.png"  width="500" alt="The proposed fine-tuning method for ATST-SED" />
 </div>
