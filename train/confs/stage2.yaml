@@ -14,7 +14,7 @@ training:
   n_test_thresholds: 50 # number of thresholds used to compute psds in test
   ema_factor: 0.999 # ema factor for mean teacher
   self_sup_loss: mse # bce or mse for self supervised mean teacher loss
-  backend: # pytorch lightning backend, ddp, dp or None
+  backend: ddp # pytorch lightning backend, ddp, dp or None
   validation_interval: 10 # we use a large validation interval to save time
   weak_split: 0.9
   seed: 42
