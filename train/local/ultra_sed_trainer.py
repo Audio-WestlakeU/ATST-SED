@@ -182,7 +182,7 @@ class SEDTask4(pl.LightningModule):
                 self._exp_dir = self.hparams["log_dir"]
         return self._exp_dir
 
-    def lr_scheduler_step(self, scheduler, optimizer_idx, metric):
+    def lr_scheduler_step(self, scheduler, metric):
         scheduler.step()
 
     def update_ema(self, alpha, global_step, model, ema_model):

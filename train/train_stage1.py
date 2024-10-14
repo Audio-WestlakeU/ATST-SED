@@ -328,6 +328,7 @@ def single_run(
             limit_test_batches=limit_test_batches,
             deterministic=config["training"]["deterministic"],
             enable_progress_bar=config["training"]["enable_progress_bar"],
+            use_distributed_sampler=False
         )
     if test_state_dict is None:
 

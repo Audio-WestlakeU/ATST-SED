@@ -3,6 +3,7 @@ import torch
 import scipy
 import torch.nn as nn
 import numpy as np
+import math
 from torchaudio.transforms import AmplitudeToDB
 from desed_task.nnet.CRNN_e2e import CRNN
 from desed_task.utils.encoder import ManyHotEncoder
@@ -166,12 +167,12 @@ class ATSTSEDInferencer(nn.Module):
 if __name__ == "__main__":
     import soundfile as sf
     import matplotlib.pyplot as plt
-    test_file = "./test1_CNspeech.wav"
+    test_file = "YOUR_TEST_FILE_HERE"
     test_name = ".".join(test_file.split("/")[-1].split(".")[:-1])
     sed_classes = [x.split("_")[0] for x in classes_labels.keys()]
     inference_model = ATSTSEDInferencer(
-        "YOUR_CKPT_PATH",
-        "./train/confs/stage2_real.yaml",
+        "YOUR_CKPT_HERE",
+        "YOUR_CONFIG_HERE",
         overlap_dur=3)
     mel_spec = inference_model.get_logmel(test_file)
     sed_results = inference_model(test_file)
@@ -180,8 +181,8 @@ if __name__ == "__main__":
     if sed_results.sum():
         # Give sed results colors
         sed_results = sed_results * np.arange(1, len(sed_results) + 1).reshape(-1, 1) * 10
-        fig, (ax1, ax2) = plt.subplots(2, 1)
-        ax1.imshow(mel_spec, aspect="auto", origin="lower", interpolation="none")
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(18, 6))
+        ax1.imshow(mel_spec, aspect="auto", origin="lower", interpolation="none", cmap="jet")
         ax1.set_xticks([])
         ax1.set_yticks([])
         ax1.set_ylabel("Mel-bands")
@@ -189,7 +190,7 @@ if __name__ == "__main__":
         sed_results = np.concatenate([np.zeros_like(sed_results), sed_results], axis=1)
         sed_results = sed_results.reshape(-1, sed_results.shape[1] // 2).astype(float)
         sed_results[sed_results == 0] = np.nan
-        ax2.imshow(sed_results, aspect="auto", origin="lower", interpolation="none", vmax=100, vmin=0, cmap='viridis')
+        ax2.imshow(sed_results, aspect="auto", origin="lower", interpolation="none", vmax=math.log(1e2), vmin=math.log(1e-7), cmap='jet')
         xticks = np.linspace(0, sed_results.shape[1], 11)
         xticks_performed = ["{:.1f}".format(x) for x in np.linspace(0, sf.info(test_file).duration, 11)]
         ax2.set_xticks(xticks, xticks_performed)

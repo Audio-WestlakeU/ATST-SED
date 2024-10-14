@@ -43,6 +43,7 @@ class BaseScheduler(object):
         plt.plot(all_lr.numpy())
         plt.show()
 
+
 class ExponentialWarmup(BaseScheduler):
     """ Scheduler to apply ramp-up during training to the learning rate.
     Args:

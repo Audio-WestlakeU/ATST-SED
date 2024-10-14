@@ -7,6 +7,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 from torchaudio.transforms import AmplitudeToDB, MelSpectrogram
+import torchmetrics.classification
 
 from desed_task.data_augm import mixup
 from desed_task.utils.scaler import TorchScaler
@@ -124,18 +125,15 @@ class SEDTask4(pl.LightningModule):
             raise NotImplementedError
 
         # for weak labels we simply compute f1 score
-        self.get_weak_student_f1_seg_macro = torchmetrics.classification.f_beta.MultilabelF1Score(
+        self.get_weak_student_f1_seg_macro = torchmetrics.classification.MultilabelF1Score(
             len(self.encoder.labels),
-            average="macro",
-            compute_on_step=False,
+            average="macro"
         )
 
-        self.get_weak_teacher_f1_seg_macro = torchmetrics.classification.f_beta.MultilabelF1Score(
+        self.get_weak_teacher_f1_seg_macro = torchmetrics.classification.MultilabelF1Score(
             len(self.encoder.labels),
-            average="macro",
-            compute_on_step=False,
+            average="macro"
         )
-
         self.scaler = self._init_scaler()
         # buffer for event based scores which we compute using sed-eval
 
@@ -179,7 +177,7 @@ class SEDTask4(pl.LightningModule):
                 self._exp_dir = self.hparams["log_dir"]
         return self._exp_dir
 
-    def lr_scheduler_step(self, scheduler, optimizer_idx, metric):
+    def lr_scheduler_step(self, scheduler, metric):
         scheduler.step()
 
     def update_ema(self, alpha, global_step, model, ema_model):
@@ -528,7 +526,7 @@ class SEDTask4(pl.LightningModule):
             alpha_st=1,
             )
 
-    def validation_epoch_end(self, outputs):
+    def on_validation_epoch_end(self, outputs):
         weak_student_f1_macro = self.get_weak_student_f1_seg_macro.compute()
         weak_teacher_f1_macro = self.get_weak_teacher_f1_seg_macro.compute()
         # Strong real
