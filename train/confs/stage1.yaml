@@ -1,6 +1,6 @@
 training:
   #batch size: [synth, weak, unlabel]
-  batch_size: [24, 24, 48, 48]
+  batch_size: [12, 12, 24, 48]
   batch_size_val: 128
   const_max: 2 # max weight used for self supervised loss
   n_epochs_warmup: 50 # num epochs used for exponential warmup
