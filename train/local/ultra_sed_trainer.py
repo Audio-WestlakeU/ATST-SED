@@ -408,7 +408,7 @@ class SEDTask4(pl.LightningModule):
             self.val_scores_postprocessed_buffer_teacher_synth.update(
                 scores_postprocessed_teacher_strong
             )
-        return
+        return 0
 
     def psds1(self, input, ground_truth, audio_durations):
         return compute_psds_from_scores(
@@ -434,7 +434,7 @@ class SEDTask4(pl.LightningModule):
             alpha_st=1,
             )
 
-    def validation_epoch_end(self, outputs):
+    def on_validation_epoch_end(self, outputs):
         weak_student_f1_macro = self.get_weak_student_f1_seg_macro.compute()
         weak_teacher_f1_macro = self.get_weak_teacher_f1_seg_macro.compute()
         # Strong real

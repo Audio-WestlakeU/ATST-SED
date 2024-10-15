@@ -500,7 +500,7 @@ class SEDTask4(pl.LightningModule):
             self.val_scores_postprocessed_buffer_teacher_synth.update(
                 scores_postprocessed_teacher_strong
             )
-        return
+        return 0
 
     def psds1(self, input, ground_truth, audio_durations):
         return compute_psds_from_scores(
