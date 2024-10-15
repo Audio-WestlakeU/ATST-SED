@@ -434,7 +434,7 @@ class SEDTask4(pl.LightningModule):
             alpha_st=1,
             )
 
-    def on_validation_epoch_end(self, outputs):
+    def on_validation_epoch_end(self):
         weak_student_f1_macro = self.get_weak_student_f1_seg_macro.compute()
         weak_teacher_f1_macro = self.get_weak_teacher_f1_seg_macro.compute()
         # Strong real
