@@ -7,7 +7,7 @@ import math
 from torchaudio.transforms import AmplitudeToDB
 from desed_task.nnet.CRNN_e2e import CRNN
 from desed_task.utils.encoder import ManyHotEncoder
-from desed_task.dataio.datasets_atst_sed import SEDTransform, ATSTTransform, read_audio
+from desed_task.dataio.datasets_atst_sed import SEDTransform, ATSTTransform, read_audio, MinMax
 from desed_task.utils.scaler import TorchScaler
 from train.local.classes_dict import classes_labels
 
@@ -28,7 +28,7 @@ class ATSTNorm(nn.Module):
 class ATSTSEDFeatureExtractor(nn.Module):
     def __init__(self, config):
         super().__init__()
-        self.sed_feat_extractor = SEDTransform(config["feature"])
+        self.sed_feat_extractor = SEDTransform(config["feats"])
         self.scaler = TorchScaler(
                 "instance",
                 config["scaler"]["normtype"],
@@ -56,7 +56,7 @@ class ATSTSEDInferencer(nn.Module):
     def __init__(
         self, 
         pretrained_path, 
-        model_config_path="./confs/stage2.yaml", 
+        model_config_path="./train/confs/stage2.yaml", 
         overlap_dur=3, 
         hard_threshold=0.5):
         super().__init__()
@@ -187,7 +187,6 @@ if __name__ == "__main__":
     sed_classes = [x.split("_")[0] for x in classes_labels.keys()]
     inference_model = ATSTSEDInferencer(
         "YOUR_CKPT_HERE",
-        "YOUR_CONFIG_HERE",
         overlap_dur=3)
     mel_spec = inference_model.get_logmel(test_file)
     sed_results = inference_model(test_file)
