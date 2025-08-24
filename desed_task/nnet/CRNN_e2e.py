@@ -52,9 +52,9 @@ class CRNN(nn.Module):
         self.softmax = nn.Softmax(dim=-1)
 
         self.cat_tf = torch.nn.Linear(nb_in+embedding_size, nb_in)
-        
-        self.init_atst(atst_init)
-        self.init_model(model_init, mode=mode)
+        if self.training:
+            self.init_atst(atst_init)
+            self.init_model(model_init, mode=mode)
         
         self.unfreeze_atst_layer = unfreeze_atst_layer
 
