@@ -34,7 +34,7 @@ ATSTSEDv2 keeps the ATST-SED two-stage fine-tuning pipeline and redesigns only S
 - Vanilla mixup branch: when the interpolation ratio is near 0.5, both sources are treated as semantically active.
 - Perturbation mixup branch: when the primary source dominates, the added sample is treated as perturbation.
 
-The resulting system uses Mean Teacher style pseudo labels together with BYOL-style embedding alignment during Stage 2 fine-tuning. According to the paper draft, the final system reaches 0.607 PSDS1 and 0.818 PSDS2 on DESED.
+The resulting system uses Mean Teacher style pseudo labels together with BYOL-style embedding alignment during Stage 2 fine-tuning. According to the paper draft, the final system reaches 0.645 PSDS1 and 0.822 PSDS2 on DESED.
 
 ## Environment
 
