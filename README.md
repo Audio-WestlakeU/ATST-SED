@@ -1,8 +1,6 @@
 # ATSTSEDv2
 
-ATSTSEDv2 is the final reproducible package for the two-stage semi-supervised sound event detection system described in the paper draft ATST-SEDv2: Semi-Supervised SED with Embedding-Level Contrastive Loss and Conditional Mixup.
-
-This folder collects the exact training code path, configs, scripts, and checkpoints needed to reproduce the final model family without depending on the rest of the historical experiment repository.
+**ATSTSEDv2 code released after the publication.**
 
 ## What Is Included
 
